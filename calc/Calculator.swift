@@ -27,6 +27,22 @@ class Calculator {
         return no1 + no2;
     }
     
+    func subtract(no1: Int, no2: Int) -> Int {
+        return no1 - no2;
+    }
+    
+    func multiply(no1: Int, no2: Int) -> Int {
+        return no1 * no2;
+    }
+    
+    func divide(no1: Int, no2: Int) -> Int {
+        return no1 / no2;
+    }
+    
+    func modulo(no1: Int, no2: Int) -> Int {
+        return no1 % no2;
+    }
+    
     func calculate(args: [String]) -> String {
         // Todo: Calculate Result from the arguments. Replace dummyResult with your actual result;
         let dummyResult = add(no1: 1, no2: 2);
