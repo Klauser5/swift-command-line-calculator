@@ -10,11 +10,19 @@ import Foundation
 
 class ValidateInput {
     
-    var result = true;
     
-    //Checks for invalid characters
-    //Only 1-9 and + - * / % allowed
+    
+    /**
+     Checks to see if the arguments consist only of allowed characters
+
+     - Parameter recipient: The command line arguments
+
+     - Throws: TBA
+
+     - Returns: A boolean value indicating if the arguments fit the requirements or not.
+     */
     func validateChars(args: [String]) -> Bool {
+        var result = true;
         for arg in args {
             
             switch arg {
