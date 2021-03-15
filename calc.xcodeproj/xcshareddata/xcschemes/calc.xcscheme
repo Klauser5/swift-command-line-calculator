@@ -76,12 +76,16 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "5"
+            argument = "500"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "c"
-            isEnabled = "NO">
+            argument = "+"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "20"
+            isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "/"
@@ -92,8 +96,12 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "2"
-            isEnabled = "YES">
+            argument = "%"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "1"
+            isEnabled = "NO">
          </CommandLineArgument>
       </CommandLineArguments>
    </LaunchAction>
