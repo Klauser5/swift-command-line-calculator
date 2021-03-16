@@ -8,9 +8,21 @@
 
 import Foundation
 
+/**
+ Throws an error if necessary
+
+ - Parameter int1: The first number being processed
+ - Parameter op: The operator of the equation
+ - Parameter int2: The second number being processed
+ - Parameter startingPos: Starts at 0
+
+
+
+ - Returns: The result of the equation
+ */
 struct Calculator {
     
-    /// For multi-step calculation, it's helpful to persist existing result
+
     var int1: Int;
     var op: String;
     var int2: Int;
@@ -18,8 +30,7 @@ struct Calculator {
     
     
     
-    init(args: [String]) {        //initialise values to array positions, with 'if let' protection for unwrapping optionals
-            
+    init(args: [String]) {
             if let unwrappedFirstInt = Int(args[startingPos]) {
                 int1 = unwrappedFirstInt
             } else {
@@ -34,14 +45,16 @@ struct Calculator {
                 exit(1)
             }
             if !orderOfOperations() {
-                findCalculationPair(args: args)         //find the right number, operator, number set if op is not priority operator
+                findCalculationPair(args: args)
             }
         }
     
-    func calculate() -> (value: Int?, position: Int) {     //outputs calculation for args from a single pair of numbers from the args array
-           var result: Int                                    //returns calculation output and position of result
+    
+
+    func calculate() -> (value: Int?, position: Int) {     
+           var result: Int
            
-           if (op == "/" || op == "%") && int2 == 0 {    //checks for divide operator or modulus division by zero
+           if (op == "/" || op == "%") && int2 == 0 {
                HandleExceptions(errInput: "").divByZero()
            }
            
@@ -58,29 +71,29 @@ struct Calculator {
                result = int1 % int2
            default:
                result = 0
-               HandleExceptions(errInput: op).unknownOperator()   //unknown operator exception handler
+               HandleExceptions(errInput: op).unknownOperator()
            }
-           ValidateInput(args: ["\(result)"]).isOutOfBounds()           //out of integer bounds exception handler
+           ValidateInput(args: ["\(result)"]).outOfBounds()
            return (result, startingPos)
        }
     
     
-    mutating func findCalculationPair(args: [String]) {   //find the first pair of integers with a priority operator
+    mutating func findCalculationPair(args: [String]) {
           while startingPos < args.count-3 && !orderOfOperations() {
               startingPos += 2
               int1 = Int(args[startingPos])!
               op = args[startingPos+1]
               int2 = Int(args[startingPos+2])!
           }
-          if startingPos == args.count-3 && !orderOfOperations() {  //use the first set in the array if none is found
+          if startingPos == args.count-3 && !orderOfOperations() {
               startingPos = 0
-              int1 = Int(args[0])!    //firstInt and secondInt are previously unwrapped with 'if let' during initialisation
+              int1 = Int(args[0])!
               op = args[1]
               int2 = Int(args[2])!
           }
       }
     
-    func orderOfOperations() -> Bool {                           //order of precedence function for operators
+    func orderOfOperations() -> Bool {                           
             switch op {
             case "+", "-":
                 return false

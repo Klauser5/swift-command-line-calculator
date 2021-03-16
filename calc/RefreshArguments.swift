@@ -8,25 +8,35 @@
 
 import Foundation
 
+/**
+ Throws an error if necessary
+
+ - Parameter args: The arguments entered into the 
+
+ - Throws: `CalcError.'error type'`
+           if `errInput` is incorrect.
+
+ - Returns: An explanation of the error and the number in question
+ */
 struct RefreshArguments {
     
     let args: [String]
     let resultValue: Int?
     let resultPosition: Int
     
-    func update() -> [String] {                                                        //return result and any args that have not been processed
+    func update() -> [String] {                                                     
         
-        if resultPosition == 0 && args.count == 3 {                                    //returns final result value
+        if resultPosition == 0 && args.count == 3 {
             return  ["\(resultValue!)"]
             
-        } else if resultPosition == 0 && args.count > 1 && args.count > 3 {            //Handles scenario if result is on the left of the args array
+        } else if resultPosition == 0 && args.count > 1 && args.count > 3 {
             return ["\(resultValue!)"]  + Array(args[resultPosition + 3...args.count - 1])
             
-        } else if resultPosition > 0 && resultPosition < args.count-3  {               //Handles scenario if result is in the middle of further calculations
+        } else if resultPosition > 0 && resultPosition < args.count-3  {
             return Array(args[0...resultPosition - 1]) + ["\(resultValue!)"] + Array(args[resultPosition + 3...args.count - 1])
             
         } else  {
-            return Array(args[0...resultPosition - 1]) + ["\(resultValue!)"]            //Handles scenario if result is on the right of the args array, but is not the last calc pass
+            return Array(args[0...resultPosition - 1]) + ["\(resultValue!)"]
             
         }
     }

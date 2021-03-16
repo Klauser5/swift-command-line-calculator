@@ -6,6 +6,16 @@
 //  Copyright © 2021 UTS. All rights reserved.
 //
 
+/**
+ Throws an error if necessary
+
+ - Parameter errInput: The number being added
+
+ - Throws: `CalcError.'error type'`
+           if `errInput` is incorrect.
+
+ - Returns: An explanation of the error and the number in question
+ */
 import Foundation
 
 struct HandleExceptions {
@@ -20,7 +30,16 @@ let errInput: String
        case incompleteExpression
    }
    
-   // //functions for error handling
+    /**
+     Throws an error
+
+     - Parameter errInput: The number being added
+
+     - Throws: `CalcError.invalidInput`
+               if `errInput` is incorrect.
+
+     - Returns: An explanation of the error and the number in question
+     */
    func invalidInput() {
        do {
            throw CalcError.invalidInput
@@ -30,6 +49,16 @@ let errInput: String
        }
    }
    
+    /**
+     Throws an error
+
+     - Parameter errInput: The number being added
+
+     - Throws: `CalcError.integerOverflow`
+               if `errInput` is incorrect.
+
+     - Returns: An explanation of the error and the number in question
+     */
    func integerOverflow() {
        do {
            throw CalcError.integerOverflow
@@ -39,6 +68,17 @@ let errInput: String
        }
    }
    
+
+ /**
+  Throws an error
+
+  - Parameter errInput: The number being added
+
+  - Throws: `CalcError.divByZero`
+            if `errInput` is incorrect.
+
+  - Returns: An explanation of the error and the number i
+ */
    func divByZero() {
        do {
            throw CalcError.divByZero
@@ -48,6 +88,16 @@ let errInput: String
        }
    }
    
+    /**
+     Throws an error
+
+     - Parameter errInput: The number being added
+
+     - Throws: `CalcError.unknownOperator`
+               if `errInput` is incorrect.
+
+     - Returns: An explanation of the error and the number i
+    */
    func unknownOperator() {
        do {
            throw CalcError.unknownOperator
@@ -57,6 +107,16 @@ let errInput: String
        }
    }
    
+    /**
+     Throws an error
+
+     - Parameter errInput: The number being added
+
+     - Throws: `CalcError.incompleteExpression`
+               if `errInput` is incorrect.
+
+     - Returns: An explanation of the error and the number i
+    */
    func incompleteExpression() {
        do {
            throw CalcError.incompleteExpression

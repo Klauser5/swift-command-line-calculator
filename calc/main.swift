@@ -9,17 +9,17 @@
 import Foundation
 
 var args = ProcessInfo.processInfo.arguments
-args.removeFirst() // remove the name of the program
+args.removeFirst() 
 ValidateInput(args: args).checkValidity();
 
 
 var result: (value: Int?, position: Int) = (0, 0)
 
-if args.count == 1 {                                //handle single arguments where optional unwrap has been checked with 'if let' during validate process
+if args.count == 1 {
     print(Int(args[0])!)
 }
 
-if args.count > 2 {                                 //process calculation passes for valid arguments until result is achieved
+if args.count > 2 {
     while args.count > 2 {
         (result.value, result.position) = Calculator(args: args).calculate()
         args = RefreshArguments(args: args, resultValue: result.value, resultPosition: result.position).update()
